@@ -397,3 +397,101 @@ int main() {
 
     return 0;
 }
+
+---
+
+# DemandFlow - Smart Demand Forecasting & Request Management
+
+A modern, fully functional web application for managing demand requests across products, resources, and supply chains. Built with clean HTML, CSS, and JavaScript.
+
+![DemandFlow](https://img.shields.io/badge/DemandFlow-v1.0-4f46e5?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+## Features
+
+- **Submit Demand Requests** — Intuitive form supporting three request types:
+  - Product & Inventory demands
+  - Resource & Staffing requests
+  - Supply Chain requirements
+
+- **Interactive Dashboard** — View, filter, search, and manage all requests with real-time status tracking (Pending, In Review, Approved, Rejected)
+
+- **Analytics & Forecasting** — Rich charts and visualizations powered by Chart.js:
+  - Requests by type (doughnut chart)
+  - Status distribution
+  - Priority breakdown
+  - Monthly demand trends with forecast line
+  - Department-level analysis
+
+- **Modern UI** — Dark theme with glass-morphism effects, smooth animations, and fully responsive design
+
+- **Persistent Data** — All data stored in localStorage, persists across sessions
+
+- **Sample Data** — Pre-loaded with 6 realistic demo requests to explore immediately
+
+## Pages
+
+| Page | Description |
+|------|-------------|
+| `index.html` | Landing page with hero, features, and request type overview |
+| `submit.html` | Demand request submission form with validation |
+| `dashboard.html` | Request management dashboard with filtering and status controls |
+| `analytics.html` | Analytics dashboard with interactive charts and forecasting |
+| `about.html` | About page with mission, team, and contact form |
+
+## Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/lakshanasri-23/Demand-Forecast-.git
+   ```
+
+2. Open `index.html` in your browser — no build tools or server required!
+
+   Or use a local server:
+   ```bash
+   # Python
+   python3 -m http.server 8000
+
+   # Node.js
+   npx serve .
+   ```
+
+3. Navigate to `http://localhost:8000` and start exploring.
+
+## Tech Stack
+
+- **HTML5** — Semantic markup
+- **CSS3** — Custom properties, Grid, Flexbox, animations
+- **JavaScript** — Vanilla ES5+ (no frameworks)
+- **Chart.js** — Interactive chart visualizations (CDN)
+- **Font Awesome** — Icon library (CDN)
+- **Google Fonts** — Inter typeface (CDN)
+
+## Project Structure
+
+```
+Demand-Forecast-/
+├── index.html          # Landing page
+├── submit.html         # Submit request form
+├── dashboard.html      # Request management dashboard
+├── analytics.html      # Analytics & forecasting
+├── about.html          # About & contact page
+├── css/
+│   └── styles.css      # Complete design system & styles
+├── js/
+│   ├── data.js         # Data layer (localStorage CRUD)
+│   ├── app.js          # Shared app logic (nav, toasts, utils)
+│   ├── submit.js       # Form submission & validation
+│   ├── dashboard.js    # Dashboard rendering & filtering
+│   └── analytics.js    # Chart rendering & analytics
+└── README.md
+```
+
+## Author
+
+**Lakshanasri** — [GitHub](https://github.com/lakshanasri-23)
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).

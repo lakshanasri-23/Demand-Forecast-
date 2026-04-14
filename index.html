@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DemandFlow - Smart Demand Forecasting & Request Management</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <i class="fas fa-chart-line"></i>
+        DemandFlow
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="about.html">About</a>
+        <a href="submit.html" class="nav-cta">
+          <i class="fas fa-plus"></i> New Request
+        </a>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>
+          Smarter <span class="text-gradient">Demand Forecasting</span> for Modern Teams
+        </h1>
+        <p>
+          Streamline your demand requests across products, resources, and supply chains. 
+          Get real-time insights, track approvals, and forecast future needs — all in one platform.
+        </p>
+        <div class="hero-buttons">
+          <a href="submit.html" class="btn btn-primary btn-lg">
+            <i class="fas fa-plus"></i> Submit Request
+          </a>
+          <a href="dashboard.html" class="btn btn-secondary btn-lg">
+            <i class="fas fa-th-large"></i> View Dashboard
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <h3 id="statRequests">0</h3>
+            <p>Total Requests</p>
+          </div>
+          <div class="hero-stat">
+            <h3 id="statApproved">0</h3>
+            <p>Approved</p>
+          </div>
+          <div class="hero-stat">
+            <h3 id="statAccuracy">95%</h3>
+            <p>Forecast Accuracy</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <h3>Demand Overview</h3>
+            <span class="hero-card-badge">Live</span>
+          </div>
+          <div class="mini-chart">
+            <div class="mini-chart-bar"></div>
+            <div class="mini-chart-bar"></div>
+            <div class="mini-chart-bar"></div>
+            <div class="mini-chart-bar"></div>
+            <div class="mini-chart-bar"></div>
+            <div class="mini-chart-bar"></div>
+            <div class="mini-chart-bar"></div>
+            <div class="mini-chart-bar"></div>
+          </div>
+          <div class="hero-card-stats">
+            <div class="hero-card-stat">
+              <div class="value" id="cardProducts">0</div>
+              <div class="label">Products</div>
+            </div>
+            <div class="hero-card-stat">
+              <div class="value" id="cardResources">0</div>
+              <div class="label">Resources</div>
+            </div>
+            <div class="hero-card-stat">
+              <div class="value" id="cardSupplyChain">0</div>
+              <div class="label">Supply Chain</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Features</span>
+        <h2>Everything You Need to <span class="text-gradient">Manage Demand</span></h2>
+        <p>Powerful tools to submit, track, and analyze demand requests across your organization.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-paper-plane"></i>
+          </div>
+          <h3>Easy Submissions</h3>
+          <p>Submit demand requests in seconds with our intuitive form supporting product, resource, and supply chain categories.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <h3>Real-Time Analytics</h3>
+          <p>Interactive charts and dashboards to visualize trends, forecast demand, and make data-driven decisions.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-bell"></i>
+          </div>
+          <h3>Status Tracking</h3>
+          <p>Track every request through its lifecycle — from submission to approval — with real-time status updates.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-filter"></i>
+          </div>
+          <h3>Smart Filtering</h3>
+          <p>Find exactly what you need with powerful search, filtering by type, priority, status, and date range.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Priority Management</h3>
+          <p>Set and manage priority levels from low to critical, ensuring urgent demands get immediate attention.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-sync-alt"></i>
+          </div>
+          <h3>Persistent Data</h3>
+          <p>All your data is saved locally and persists across sessions, so you never lose track of your requests.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Request Types Section -->
+  <section class="request-types section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Request Types</span>
+        <h2>Three Pillars of <span class="text-gradient">Demand Management</span></h2>
+        <p>Comprehensive coverage for all your demand forecasting needs.</p>
+      </div>
+      <div class="types-grid">
+        <div class="type-card fade-in">
+          <div class="type-icon">
+            <i class="fas fa-boxes-stacked"></i>
+          </div>
+          <h3>Product & Inventory</h3>
+          <p>Manage product demand forecasts and inventory requirements efficiently.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Stock level monitoring</li>
+            <li><i class="fas fa-check"></i> Reorder point tracking</li>
+            <li><i class="fas fa-check"></i> Seasonal demand planning</li>
+            <li><i class="fas fa-check"></i> SKU-level forecasting</li>
+          </ul>
+        </div>
+        <div class="type-card fade-in">
+          <div class="type-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Resource & Staffing</h3>
+          <p>Plan workforce needs and resource allocation with precision.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Headcount planning</li>
+            <li><i class="fas fa-check"></i> Skill gap analysis</li>
+            <li><i class="fas fa-check"></i> Workload balancing</li>
+            <li><i class="fas fa-check"></i> Contractor management</li>
+          </ul>
+        </div>
+        <div class="type-card fade-in">
+          <div class="type-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3>Supply Chain</h3>
+          <p>Optimize your supply chain with data-driven demand insights.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Supplier coordination</li>
+            <li><i class="fas fa-check"></i> Lead time optimization</li>
+            <li><i class="fas fa-check"></i> Logistics planning</li>
+            <li><i class="fas fa-check"></i> Cost forecasting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to <span class="text-gradient">Get Started</span>?</h2>
+      <p>Submit your first demand request and experience the power of smart forecasting.</p>
+      <div class="hero-buttons" style="justify-content: center;">
+        <a href="submit.html" class="btn btn-primary btn-lg">
+          <i class="fas fa-rocket"></i> Submit Your First Request
+        </a>
+        <a href="analytics.html" class="btn btn-secondary btn-lg">
+          <i class="fas fa-chart-pie"></i> Explore Analytics
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="navbar-brand">
+            <i class="fas fa-chart-line"></i>
+            DemandFlow
+          </a>
+          <p>Smart demand forecasting and request management for modern teams. Track, analyze, and optimize your demand across products, resources, and supply chains.</p>
+        </div>
+        <div>
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="submit.html">Submit Request</a></li>
+            <li><a href="analytics.html">Analytics</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html#contact">Contact</a></li>
+            <li><a href="#">Documentation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+            <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 DemandFlow. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

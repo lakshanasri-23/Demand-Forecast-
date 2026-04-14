@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Request - DemandFlow</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <i class="fas fa-chart-line"></i>
+        DemandFlow
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="about.html">About</a>
+        <a href="submit.html" class="nav-cta active">
+          <i class="fas fa-plus"></i> New Request
+        </a>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <h1><i class="fas fa-plus-circle" style="color: var(--primary-light); margin-right: 12px;"></i>Submit Demand Request</h1>
+      <p>Fill in the details below to submit a new demand request for review.</p>
+    </div>
+  </div>
+
+  <!-- Form Section -->
+  <section class="form-section">
+    <div class="container">
+      <div class="form-container">
+        <div class="form-card">
+          <form id="requestForm" novalidate>
+            <!-- Request Type -->
+            <div class="form-group">
+              <label>Request Type <span class="required">*</span></label>
+              <div class="type-selector">
+                <div class="type-option">
+                  <input type="radio" name="requestType" id="typeProduct" value="product" checked>
+                  <label for="typeProduct">
+                    <i class="fas fa-boxes-stacked"></i>
+                    <span>Product & Inventory</span>
+                  </label>
+                </div>
+                <div class="type-option">
+                  <input type="radio" name="requestType" id="typeResource" value="resource">
+                  <label for="typeResource">
+                    <i class="fas fa-users"></i>
+                    <span>Resource & Staffing</span>
+                  </label>
+                </div>
+                <div class="type-option">
+                  <input type="radio" name="requestType" id="typeSupplyChain" value="supply-chain">
+                  <label for="typeSupplyChain">
+                    <i class="fas fa-truck"></i>
+                    <span>Supply Chain</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Title -->
+            <div class="form-group">
+              <label for="requestTitle">Request Title <span class="required">*</span></label>
+              <input type="text" class="form-control" id="requestTitle" placeholder="e.g., Q3 Inventory Restock for Electronics" required>
+            </div>
+
+            <!-- Row: Department & Priority -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="department">Department <span class="required">*</span></label>
+                <select class="form-control" id="department" required>
+                  <option value="">Select department</option>
+                  <option value="Operations">Operations</option>
+                  <option value="Sales">Sales</option>
+                  <option value="Marketing">Marketing</option>
+                  <option value="Engineering">Engineering</option>
+                  <option value="Finance">Finance</option>
+                  <option value="HR">Human Resources</option>
+                  <option value="Supply Chain">Supply Chain</option>
+                  <option value="Logistics">Logistics</option>
+                  <option value="Procurement">Procurement</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="priority">Priority Level <span class="required">*</span></label>
+                <select class="form-control" id="priority" required>
+                  <option value="">Select priority</option>
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                  <option value="critical">Critical</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row: Quantity & Unit -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="quantity">Quantity / Amount <span class="required">*</span></label>
+                <input type="number" class="form-control" id="quantity" placeholder="e.g., 500" min="1" required>
+              </div>
+              <div class="form-group">
+                <label for="unit">Unit</label>
+                <select class="form-control" id="unit">
+                  <option value="units">Units</option>
+                  <option value="kg">Kilograms (kg)</option>
+                  <option value="tons">Tons</option>
+                  <option value="liters">Liters</option>
+                  <option value="pieces">Pieces</option>
+                  <option value="hours">Hours</option>
+                  <option value="headcount">Headcount</option>
+                  <option value="pallets">Pallets</option>
+                  <option value="containers">Containers</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row: Required By Date & Requester -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="requiredDate">Required By <span class="required">*</span></label>
+                <input type="date" class="form-control" id="requiredDate" required>
+              </div>
+              <div class="form-group">
+                <label for="requesterName">Requester Name <span class="required">*</span></label>
+                <input type="text" class="form-control" id="requesterName" placeholder="Your full name" required>
+              </div>
+            </div>
+
+            <!-- Requester Email -->
+            <div class="form-group">
+              <label for="requesterEmail">Requester Email</label>
+              <input type="email" class="form-control" id="requesterEmail" placeholder="email@company.com">
+            </div>
+
+            <!-- Estimated Budget -->
+            <div class="form-group">
+              <label for="budget">Estimated Budget ($)</label>
+              <input type="number" class="form-control" id="budget" placeholder="e.g., 25000" min="0" step="100">
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+              <label for="description">Description & Justification <span class="required">*</span></label>
+              <textarea class="form-control" id="description" placeholder="Provide a detailed description of the demand, including justification, expected impact, and any relevant context..." required></textarea>
+            </div>
+
+            <!-- Additional Notes -->
+            <div class="form-group">
+              <label for="notes">Additional Notes</label>
+              <textarea class="form-control" id="notes" placeholder="Any additional information, constraints, or special requirements..." style="min-height: 80px;"></textarea>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+              <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                <i class="fas fa-undo"></i> Reset
+              </button>
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i> Submit Request
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 DemandFlow. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/submit.js"></script>
+</body>
+</html>
