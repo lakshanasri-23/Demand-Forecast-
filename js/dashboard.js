@@ -20,6 +20,12 @@ function initDashboard() {
   initSearch();
 }
 
+function refreshDashboard() {
+  updateDashboardStats();
+  renderRequests();
+  renderActivity();
+}
+
 // ===== STATS =====
 function updateDashboardStats() {
   var stats = getStats();
@@ -165,7 +171,7 @@ function quickStatus(id, status) {
   updateRequestStatus(id, status);
   closeModal('viewModal');
   showToast('Request status updated to ' + capitalizeFirst(status) + '.', 'success');
-  initDashboard();
+  refreshDashboard();
 }
 
 // ===== CHANGE STATUS =====
@@ -179,7 +185,7 @@ function changeStatus(id) {
 
   updateRequestStatus(id, nextStatus);
   showToast('Status changed to ' + capitalizeFirst(nextStatus) + '.', 'success');
-  initDashboard();
+  refreshDashboard();
 }
 
 // ===== DELETE REQUEST =====
@@ -190,7 +196,7 @@ function confirmDelete(id) {
   if (confirm('Are you sure you want to delete "' + request.title + '"? This action cannot be undone.')) {
     deleteRequest(id);
     showToast('Request deleted successfully.', 'success');
-    initDashboard();
+    refreshDashboard();
   }
 }
 
