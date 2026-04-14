@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - DemandFlow</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <i class="fas fa-chart-line"></i>
+        DemandFlow
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="about.html">About</a>
+        <a href="submit.html" class="nav-cta">
+          <i class="fas fa-plus"></i> New Request
+        </a>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <h1><i class="fas fa-th-large" style="color: var(--primary-light); margin-right: 12px;"></i>Dashboard</h1>
+      <p>Monitor and manage all demand requests in one place.</p>
+    </div>
+  </div>
+
+  <!-- Dashboard Section -->
+  <section class="dashboard-section">
+    <div class="container">
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <span>Total Requests</span>
+            <i class="fas fa-inbox"></i>
+          </div>
+          <div class="stat-value" id="dashTotal">0</div>
+          <span class="stat-change positive"><i class="fas fa-arrow-up"></i> Active</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <span>Pending</span>
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="stat-value" id="dashPending" style="color: var(--warning);">0</div>
+          <span class="stat-change positive"><i class="fas fa-hourglass-half"></i> Awaiting review</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <span>Approved</span>
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div class="stat-value" id="dashApproved" style="color: var(--success);">0</div>
+          <span class="stat-change positive"><i class="fas fa-arrow-up"></i> Processed</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <span>Rejected</span>
+            <i class="fas fa-times-circle"></i>
+          </div>
+          <div class="stat-value" id="dashRejected" style="color: var(--danger);">0</div>
+          <span class="stat-change negative"><i class="fas fa-arrow-down"></i> Declined</span>
+        </div>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <div class="search-input">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Search requests by title, department, or requester...">
+        </div>
+        <div class="filter-chips">
+          <button class="filter-chip active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="pending">Pending</button>
+          <button class="filter-chip" data-filter="approved">Approved</button>
+          <button class="filter-chip" data-filter="in-review">In Review</button>
+          <button class="filter-chip" data-filter="rejected">Rejected</button>
+        </div>
+      </div>
+
+      <!-- Dashboard Grid -->
+      <div class="dashboard-grid">
+        <!-- Main Content -->
+        <div class="dashboard-main">
+          <div class="card">
+            <div class="card-header">
+              <h3>All Requests</h3>
+              <a href="submit.html" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus"></i> New Request
+              </a>
+            </div>
+            <div class="card-body" style="padding: 0;">
+              <div id="requestTableContainer">
+                <table class="request-table">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Type</th>
+                      <th>Priority</th>
+                      <th>Status</th>
+                      <th>Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="requestTableBody">
+                    <!-- Populated by JS -->
+                  </tbody>
+                </table>
+              </div>
+              <div id="emptyState" class="empty-state" style="display: none;">
+                <i class="fas fa-inbox"></i>
+                <h3>No requests found</h3>
+                <p>Submit your first demand request to get started.</p>
+                <a href="submit.html" class="btn btn-primary">
+                  <i class="fas fa-plus"></i> Submit Request
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="dashboard-sidebar">
+          <!-- Quick Stats by Type -->
+          <div class="card">
+            <div class="card-header">
+              <h3>By Request Type</h3>
+            </div>
+            <div class="card-body">
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0;">
+                  <span class="type-badge"><i class="fas fa-boxes-stacked"></i> Product</span>
+                  <span style="font-weight: 600;" id="typeProduct">0</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-top: 1px solid var(--border-color);">
+                  <span class="type-badge"><i class="fas fa-users"></i> Resource</span>
+                  <span style="font-weight: 600;" id="typeResource">0</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-top: 1px solid var(--border-color);">
+                  <span class="type-badge"><i class="fas fa-truck"></i> Supply Chain</span>
+                  <span style="font-weight: 600;" id="typeSupplyChain">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Recent Activity</h3>
+            </div>
+            <div class="card-body">
+              <div class="activity-list" id="activityList">
+                <div class="empty-state" style="padding: 20px 0;">
+                  <i class="fas fa-stream" style="font-size: 1.5rem;"></i>
+                  <p style="font-size: 0.85rem;">No activity yet</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- View Detail Modal -->
+  <div class="modal-overlay" id="viewModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">Request Details</h3>
+        <button class="btn-icon" onclick="closeModal('viewModal')">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Populated by JS -->
+      </div>
+      <div class="modal-footer" id="modalFooter">
+        <button class="btn btn-secondary btn-sm" onclick="closeModal('viewModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 DemandFlow. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
